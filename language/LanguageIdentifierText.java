@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//package org.apache.tika.language;
-package language;
+package org.apache.tika.language;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,14 +31,14 @@ public class LanguageIdentifierText {
     private static OutputStreamWriter out = null;
     private static InputStreamReader in = null;
 
-    public LanguageIdentifierText() {        
+    public LanguageIdentifierText() {
         try {
             url = new URL("http://127.0.0.1:8000");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        
-        try {        
+
+        try {
             con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("PUT");
             con.setDoOutput(true);
@@ -50,7 +49,7 @@ public class LanguageIdentifierText {
 
     public String getLanguage(String content){
         String language = "error";
-        
+
         try {
             out = new OutputStreamWriter(con.getOutputStream());
             out.write(content);
@@ -58,7 +57,7 @@ public class LanguageIdentifierText {
 
             in = new InputStreamReader(con.getInputStream());
             language = getStringFromInputStreamReader(in);
-            in.close();            
+            in.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

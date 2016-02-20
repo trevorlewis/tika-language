@@ -14,21 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//package org.apache.tika.language;
-package language;
+package org.apache.tika.language;
 
-import language.LanguageIdentifierText;
+import org.junit.Test;
 
 public class LanguageIdentifierTextTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         String content = "Hello World!!!";
-    
+
         LanguageIdentifierText identifier = new LanguageIdentifierText();
         String language = identifier.getLanguage(content);
-        
-        System.out.println(language);
-    
-    }
 
+        System.out.println(language);
+    }
 }
